@@ -37,12 +37,12 @@ for file in excel_files:
     df['ds'] = pd.to_datetime(df['ds'])
 
     inferred_freq = pd.infer_freq(df['ds'])
-    # if inferred_freq is None:
-    #     if "Iquitos" in os.path.basename(file) or "Sanjuan" in os.path.basename(file):
-    #         inferred_freq = 'W'
-    #         continue
-    #     else:
-    #         raise ValueError("Could not infer frequency. Please ensure 'ds' is regularly spaced.")
+    if inferred_freq is None:
+        if "Iquitos" in os.path.basename(file) or "Sanjuan" in os.path.basename(file):
+            inferred_freq = 'W'
+            continue
+        # else:
+        #     raise ValueError("Could not infer frequency. Please ensure 'ds' is regularly spaced.")
 
     for col in cols:
         if col in df.columns:

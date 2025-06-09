@@ -52,7 +52,7 @@ for file in excel_files:
     series = df[[col_name, 'ds']].copy()
     # series = df[col_name].values
     n_samples = len(series)
-    train_len = int(0.9 * n_samples)
+    train_len = int(0.98 * n_samples)
 
     train = series.iloc[:train_len]
     test = series.iloc[train_len:]

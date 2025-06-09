@@ -41,8 +41,8 @@ for file in excel_files:
         if "Iquitos" in os.path.basename(file) or "Sanjuan" in os.path.basename(file):
             inferred_freq = 'W'
             continue
-        else:
-            raise ValueError("Could not infer frequency. Please ensure 'ds' is regularly spaced.")
+        # else:
+        #     raise ValueError("Could not infer frequency. Please ensure 'ds' is regularly spaced.")
 
     for col in cols:
         if col in df.columns:
@@ -52,7 +52,7 @@ for file in excel_files:
     series = df[[col_name, 'ds']].copy()
     # series = df[col_name].values
     n_samples = len(series)
-    train_len = int(0.9 * n_samples)
+    train_len = int(0.95 * n_samples)
 
     train = series.iloc[:train_len]
     test = series.iloc[train_len:]

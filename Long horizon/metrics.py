@@ -27,3 +27,10 @@ def crps(y_true, ensemble_forecasts):
     y_true = np.array(y_true)
     ensemble_forecasts = np.array(ensemble_forecasts)
     return np.mean(crps_ensemble(y_true, ensemble_forecasts))
+
+def smape(y_true, y_pred):
+    y_true = np.array(y_true)
+    y_pred = np.array(y_pred)
+    denominator = (np.abs(y_true) + np.abs(y_pred))
+    denominator[denominator == 0] = 1e-8  # avoid divide-by-zero
+    return 100 * np.mean(2 * np.abs(y_true - y_pred) / denominator)

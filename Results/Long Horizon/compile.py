@@ -6,7 +6,7 @@ import torch
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of target subfolders
-target_folders = ["timegpt"]
+target_folders = ["Arima","Catboost", "Chronos", "DLinear", "Enc Dec", "ETS", "LightGBM", "LSTM", "Naive","NBEATS","NHITS", "NVAR", "timegpt", "TSMixer", "XGBoost"]
 
 # Store all file paths
 all_file_paths = []
@@ -43,4 +43,4 @@ for path in all_file_paths:
             map_dict[os.path.basename(path).split(" ")[0] + " " + os.path.basename(row[0])[:-5] + " " + 'actuals'] = row[1:]
 
 print(map_dict)
-torch.save(map_dict, "timegpt_preds_actuals.pt")
+torch.save(map_dict, "long_preds_actuals_all_combined.pt")
